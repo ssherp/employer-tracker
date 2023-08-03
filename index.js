@@ -100,13 +100,60 @@ const addNewRole = () => {
 
 
 const addNewEmployee = () => {
-    
-}
+    db.query("select * from roles", (err, data) => {
+        if (err) {
+            console.error(err);
+            return;
+        }
+        const roleChoices = data.map((role) => ({
+            name: role.title,
+            value:role.id
+        }));
+        inquirer.prompt([
+            {
+                type: "input",
+                name: "firstName",
+                message: "Enter the first name of the employee:",
+            },
+            {
+                type: "input",
+                name: "lastName",
+                message: "Enter the last name of the employee:",
+            },
+            {
+                type: "list",
+                name: "roleId",
+                message: "Select the role for the employee:",
+                choices: roleChoices,
+            },
+            {
+                type: "input",
+                name: "managerId",
+                message:"Enter the manager ID for the employee (if applicable):",    
+            }
+        ])
+        .then(res => {
+            const { firstName, lastName, roleId, managerId } = res;
+
+            db.query(
+                "INSERT INTO employee (first_name, last_name, role_id, manager_id) VALUES (?, ?, ?, ?)",
+                [firstName, lastName, roleId, managerId || null],
+                (err, data) => {
+                    if (err) {
+                        console.error(err);
+                    } else {
+                        console.log("New employee added successfully!");
+                    }
+                    menu();
+                }
+            );
+        });
+    });
+};
 
 const updateEmployeeRole = () => {
 
 }
-
 
 const questions = [{
     type: "list",
