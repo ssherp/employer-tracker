@@ -225,7 +225,7 @@ const questions = [{
 }
 ]
 
-
+//switch statements
 const menu = () => {
     inquirer.prompt(questions).then(res => {
         switch (res.menu) {

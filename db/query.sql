@@ -8,5 +8,3 @@ FROM employee
 LEFT JOIN roles ON employee.role_id=roles.id
 LEFT JOIN department ON roles.department_id=department.id
 LEFT JOIN employee m ON employee.manager_id=m.id;
-
-SELECT * FROM employee WHERE employee.role_id IN (2,3,7);
