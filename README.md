@@ -1,7 +1,7 @@
 # Employee Tracker
 Employee Tracker is a command-line application that allows users to manage employee data in a company. It provides functionalities to view all departments, roles, and employees, add new departments, roles, and employees, as well as update an employee's role.
 
-[visit the tutorial video]
+[visit the tutorial video](https://drive.google.com/file/d/1XqbEoLCdiwQiBzdM59EwjexGtDYgSzSf/view)
 ## Installation
  To run the Employee Tracker locally, follow these steps:
 1. Clone the repository:
